@@ -6,8 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 import styles from '../styles/Home.module.css';
-import ThreeCanvas from '../components/three/ThreeCanvas';
-import SceneHome from '../components/three/SceneHome';
+
 import { Reveal } from '../components/animation/gsap';
 
 if (typeof window !== 'undefined') {
@@ -18,48 +17,58 @@ export default function Home() {
   const container = useRef();
   const heroRef = useRef();
   const zoomBgRef = useRef();
-  const heroContentRef = useRef();
+  const scrollIndicatorRef = useRef();
+
 
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
         start: 'top top',
-        end: '+=1000', // Scroll distance to complete animation
+        end: '+=1500', // Scroll distance to complete animation
         scrub: true,
         pin: true,
         anticipatePin: 1,
       },
     });
 
-    // Scale up the background circle to fill the screen
+    // Scale up the image
     tl.to(zoomBgRef.current, {
-      scale: 20, // Scale massive to ensure it covers everything
-      borderRadius: '0%', 
-      backgroundColor: '#ffffff',
-      ease: 'power1.inOut',
+      scale: 50, // Zoom in massive
+      transformOrigin: '56% 47%', // Change this to specify zoom position (e.g., '30% 40%')
+      ease: 'power1.out',
     })
-    // Scale up text as well (zoom in effect) and fade out
-    .to(heroContentRef.current, {
+    .to(zoomBgRef.current, {
       opacity: 0,
-      scale: 3, // Zoom in
       ease: 'power1.in',
-    }, '<'); // Run at start of timeline
+    }, '<20%') // Start fading out after 20% of the zoom
+    .to(scrollIndicatorRef.current, {
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power1.out',
+    }, '<'); // Fade out indicator immediately on scroll
 
   }, { scope: container });
 
   return (
     <div ref={container} className={styles.container}>
-      <ThreeCanvas className={styles.canvas}>
-        <SceneHome />
-      </ThreeCanvas>
+
 
       <section ref={heroRef} className={styles.hero}>
         <div className={styles.zoomWrapper}>
-          <div ref={zoomBgRef} className={styles.zoomBackground} />
-          <div ref={heroContentRef} className={styles.heroContent}>
-            <h1 className={styles.title}>IDWeek</h1>
-            <p className={styles.subtitle}>Innovation & Design Week</p>
+          <img 
+            ref={zoomBgRef} 
+            src="/images_background/background_test.png" 
+            alt="Background" 
+            className={styles.heroImage} 
+          />
+        </div>
+        <div ref={scrollIndicatorRef} className={styles.scrollIndicator}>
+          <span className={styles.scrollText}>Scroll down for more</span>
+          <div className={styles.scrollArrow}>
+            <svg viewBox="0 0 24 24">
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
           </div>
         </div>
       </section>

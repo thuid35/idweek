@@ -1,0 +1,44 @@
+.loaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: flex-start;
+    /* Align left */
+    align-items: flex-end;
+    /* Align bottom */
+    padding: 20px;
+    /* Add some padding from the edges */
+
+    /* Initial state for transition */
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center center;
+
+    /* Transition for the exit effect */
+    transition: opacity 0.8s ease-in, transform 0.4s ease-in, visibility 0.4s;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    /* The "Forward Acceleration" effect */
+    transform: scale(1.5);
+}
+
+.percentage {
+    font-size: 40vw;
+    /* Very large text */
+    line-height: 1;
+    font-weight: bold;
+    color: #EB6100;
+    font-family: 'Kanit', sans-serif;
+    /* Use the requested font */
+    margin: 0;
+}

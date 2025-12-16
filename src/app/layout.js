@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import SmoothScrollProvider from '../components/providers/SmoothScrollProvider';
+import Loader from '../components/ui/Loader';
 
 export const metadata = {
   title: 'IDWeek',
@@ -13,8 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <SmoothScrollProvider>
+          <Loader />
           <Header />
-          <main style={{ minHeight: '100vh', paddingTop: '80px' }}>
+          <main style={{ minHeight: '100vh' }}>
             {children}
           </main>
           <Footer />
