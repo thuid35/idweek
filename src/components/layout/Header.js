@@ -9,6 +9,7 @@ import clsx from 'clsx';
 export default function Header() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const pathname = usePathname();
 
   // Close mobile menu when route changes
@@ -26,11 +27,18 @@ export default function Header() {
 
         {/* Hamburger Button */}
         <button 
-          className={clsx(styles.hamburger, isMobileOpen && styles.active)}
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          className={clsx(styles.hamburger, isMobileOpen ? styles.active : (isClosing ? styles.closing : ''))}
+          onClick={() => {
+            if (isMobileOpen) {
+              setIsClosing(true);
+              setIsMobileOpen(false);
+            } else {
+              setIsMobileOpen(true);
+              setIsClosing(false);
+            }
+          }}
           aria-label="Toggle menu"
         >
-          <span />
           <span />
           <span />
         </button>
@@ -64,4 +72,4 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};

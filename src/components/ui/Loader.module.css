@@ -11,7 +11,7 @@
     /* Align left */
     align-items: flex-end;
     /* Align bottom */
-    padding: 20px;
+    padding: 25px;
     /* Add some padding from the edges */
 
     /* Initial state for transition */
@@ -20,7 +20,7 @@
     transform-origin: center center;
 
     /* Transition for the exit effect */
-    transition: opacity 0.8s ease-in, transform 0.4s ease-in, visibility 0.4s;
+    transition: opacity 0.2s ease-in, transform 0.4s ease-in, visibility 0.4s;
 }
 
 .hidden {

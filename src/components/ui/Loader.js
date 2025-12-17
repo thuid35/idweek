@@ -7,14 +7,14 @@ import styles from './Loader.module.css';
 export default function Loader() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [progress, setProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [ progress, setProgress ] = useState(0);
+  const [ isVisible, setIsVisible ] = useState(true);
   const isInitialLoad = useRef(true);
 
   useEffect(() => {
     // Reset and start animation on path or search params change
     startLoading();
-  }, [pathname, searchParams]);
+  }, [ pathname, searchParams ]);
 
   const startLoading = () => {
     setIsVisible(true);
@@ -58,7 +58,7 @@ export default function Loader() {
       }
 
       setProgress(currentProgress);
-    }, 50); // Update every 50ms
+    }, 80); // Update values every X ms
 
     return () => clearInterval(interval);
   };
@@ -86,10 +86,10 @@ export default function Loader() {
   }, []);
 
   return (
-    <div className={`${styles.loaderContainer} ${!isVisible ? styles.hidden : ''}`}>
+    <div id="loader_container" className={`${styles.loaderContainer} ${!isVisible ? styles.hidden : ''}`}>
       <div className={styles.progressContainer}>
         <div className={styles.percentage}>{progress}</div>
       </div>
     </div>
   );
-}
+};
