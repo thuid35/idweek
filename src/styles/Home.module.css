@@ -40,6 +40,23 @@
     z-index: 1;
 }
 
+.titleWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Overlay on top of heroImage */
+    pointer-events: none;
+}
+
+.titleGraph {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* Removed heroContent, title, subtitle as requested */
 
 .section {
@@ -70,6 +87,116 @@
     color: #ddd;
 }
 
+/* Marquee and Separator Line */
+.marqueeWrapper {
+    position: relative;
+    /* Changed from absolute to relative for normal flow */
+    width: 100%;
+    z-index: 20;
+    /* Same as other sections */
+    padding: 2rem 0;
+    /* Add some spacing */
+    background-color: var(--background);
+    opacity: 0;
+    /* Hidden by default, controlled by GSAP */
+    margin-top: -1px;
+    /* Overlap slightly if needed or just normal flow */
+}
+
+.separatorLine {
+    width: 0%;
+    /* Starts at 0, grows with GSAP */
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 1rem auto;
+    /* Space above and below */
+}
+
+.marqueeContainer {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marqueeContent {
+    display: inline-block;
+    padding-left: 100%;
+    /* Start off-screen */
+    animation: marquee 15s linear infinite;
+}
+
+.marqueeText {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+        /* Move to right */
+    }
+}
+
+/* If we want standard continuous marquee (seamless loop), we need duplicate text. 
+   But "text moving from left to right" usually implies just entering and exiting, or looping. 
+   For a seamless loop moving Left -> Right, we'd start at -100% and move to 0. 
+   Or if it's "scrolling text", usually it's Right -> Left.
+   User said "From Left to Right moving", so ->>>> direction.
+   Let's adjust keyframes to move text from left to right.
+*/
+@keyframes marqueeLeftToRight {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+.marqueeContent {
+    /* Override the simpler one above for better control if needed, but sticking to basic CSS for now. */
+    /* We will use the keyframes defined below properly for continuous loop if possible */
+    display: flex;
+    width: fit-content;
+}
+
+/* Let's refine the marquee animation for "Left to Right" */
+/* The text should move ->>>> */
+
+.marqueeInner {
+    display: flex;
+    gap: 2rem;
+    /* Allow it to be wider than screen */
+    animation: scrollRight 10s linear infinite;
+}
+
+@keyframes scrollRight {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* 
+Wait, standard "Marquee" usually duplicates content to loop seamless.
+If I have "Content Content", and I want to move Left to Right (<<<--- is R to L. --->>> is L to R).
+So content moves --->.
+If I start at -50% (halfway) and move to 0, it moves right.
+*/
+
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .section {
@@ -83,6 +210,10 @@
 
     .sectionContent {
         font-size: 1rem;
+    }
+
+    .marqueeText {
+        font-size: 1.2rem;
     }
 }
 

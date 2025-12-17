@@ -364,8 +364,14 @@
     top: 0;
     left: 0;
     width: 100vw;
+
     height: 100vh;
-    background: #1a1a1a;
+    background: rgba(66, 66, 66, 0.8);
+    /* Semi-transparent background */
+    backdrop-filter: blur(10px);
+    /* Add blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari support */
     flex-direction: column;
     justify-content: center;
     transform: translateX(100%);
