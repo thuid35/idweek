@@ -13,101 +13,68 @@ export default function Gallery() {
   // 追蹤每張照片的 hover 狀態
   const [hoveredIndex, setHoveredIndex] = useState(null);
   
-  // 圖片載入追蹤
-  const [loadedImages, setLoadedImages] = useState(0);
-  const totalImages = useRef(0);
-  const loadedImagesSet = useRef(new Set());
-  const loadingTimeoutRef = useRef(null);
-  const lastProgressRef = useRef(0);
+  // 頁面載入追蹤
+  const [isPageReady, setIsPageReady] = useState(false);
   
-  // 計算總圖片數
+  // 監聽頁面完整渲染
   useEffect(() => {
-    // 只追蹤靜態圖片（不追蹤 overlay，因為它們會重複）
-    // 老師：2 張靜態
-    // 總召：2 張靜態
-    // 同學：36 張靜態
-    // GIF 預載：40 張（2 老師 + 2 總召 + 36 同學）
-    // 總計：80 張
-    totalImages.current = 80;
-    
-    // 設定 timeout，10 秒後強制完成
-    loadingTimeoutRef.current = setTimeout(() => {
+    let progress = 0;
+    const updateProgress = (value) => {
+      progress = value;
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('updateLoadingProgress', {
-          detail: { progress: 100, isComplete: true }
+          detail: { progress, isComplete: progress >= 100 }
         }));
       }
+    };
+
+    // 初始進度
+    updateProgress(0);
+    console.log('[Gallery] 開始載入頁面');
+
+    // DOM 載入完成
+    if (document.readyState === 'loading') {
+      const handleDOMContentLoaded = () => {
+        console.log('[Gallery] DOM 載入完成');
+        updateProgress(30);
+      };
+      document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+    } else {
+      updateProgress(30);
+    }
+
+    // 監聽所有資源載入完成
+    const handleLoad = () => {
+      console.log('[Gallery] 所有資源載入完成');
+      updateProgress(70);
+      
+      // 等待一小段時間確保渲染完成
+      setTimeout(() => {
+        console.log('[Gallery] 頁面渲染完成');
+        updateProgress(100);
+        setIsPageReady(true);
+      }, 500);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    // 設定最大等待時間（10 秒）
+    const maxTimeout = setTimeout(() => {
+      console.log('[Gallery] 達到最大等待時間，強制完成');
+      updateProgress(100);
+      setIsPageReady(true);
     }, 10000);
-    
+
     return () => {
-      if (loadingTimeoutRef.current) {
-        clearTimeout(loadingTimeoutRef.current);
-      }
+      document.removeEventListener('DOMContentLoaded', () => {});
+      window.removeEventListener('load', handleLoad);
+      clearTimeout(maxTimeout);
     };
   }, []);
-  
-  // 更新載入進度（平滑更新）
-  useEffect(() => {
-    if (totalImages.current > 0) {
-      const newProgress = (loadedImages / totalImages.current) * 100;
-      
-      // 只有當新進度大於上次進度時才更新（防止倒退）
-      if (newProgress > lastProgressRef.current) {
-        lastProgressRef.current = newProgress;
-        
-        const isComplete = loadedImages >= totalImages.current;
-        
-        // 使用 requestAnimationFrame 平滑更新
-        requestAnimationFrame(() => {
-          if (typeof window !== 'undefined') {
-            window.dispatchEvent(new CustomEvent('updateLoadingProgress', {
-              detail: { progress: newProgress, isComplete }
-            }));
-          }
-        });
-        
-        // 如果完成，清除 timeout
-        if (isComplete && loadingTimeoutRef.current) {
-          clearTimeout(loadingTimeoutRef.current);
-        }
-      }
-    }
-  }, [loadedImages]);
-
-  
-  // 處理圖片載入完成
-  const handleImageLoad = (imageId) => {
-    if (!loadedImagesSet.current.has(imageId)) {
-      loadedImagesSet.current.add(imageId);
-      setLoadedImages(prev => prev + 1);
-    }
-  };
-  
-  // 預載所有 GIF
-  useEffect(() => {
-    const preloadImages = [];
-    
-    // 老師 GIF
-    preloadImages.push('/images/teachers_g/chang.gif');
-    preloadImages.push('/images/teachers_g/lin.gif');
-    
-    // 總召 GIF
-    preloadImages.push('/images/manager_g/wu.gif');
-    preloadImages.push('/images/manager_g/lee.gif');
-    
-    // 同學 GIF
-    photos.forEach(photo => {
-      preloadImages.push(photo.gifSrc);
-    });
-    
-    // 預載所有 GIF
-    preloadImages.forEach((src, index) => {
-      const img = new window.Image();
-      img.onload = () => handleImageLoad(`preload-gif-${index}`);
-      img.onerror = () => handleImageLoad(`preload-gif-${index}`); // 即使錯誤也計入，避免卡住
-      img.src = src;
-    });
-  }, [photos]);
 
   
   // 建立方格陣列
@@ -120,8 +87,47 @@ export default function Gallery() {
 
   return (
     <div className={styles.pageWrapper}>
+      {/* 頁面角落裝飾照片 */}
+      <div className={styles.pageCornerPhoto} style={{ top: '300px', left: '-60px', rotate: '-5deg'}}>
+        <Image
+          src="/images/items/can1.png"
+          alt="角落裝飾"
+          width={150}
+          height={200}
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
+      <div className={styles.pageCornerPhoto} style={{ top: '210px', right: '-180px', rotate: '15deg' }}>
+        <Image
+          src="/images/items/can2.png"
+          alt="角落裝飾"
+          width={200}
+          height={250}
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
+      <div className={styles.pageCornerPhoto} style={{ top: '750px', left: '-20px', rotate: '-15deg' }}>
+        <Image
+          src="/images/items/tamiyacan.png"
+          alt="角落裝飾"
+          width={100}
+          height={200}
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
+      <div className={styles.pageCornerPhoto} style={{ top: '850px', right: '-220px' }}>
+        <Image
+          src="/images/items/can3.png"
+          alt="角落裝飾"
+          width={120}
+          height={250}
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
+
       {/* 老師區塊 - 2 張照片 */}
       <div className={styles.sectionContainer}>
+        
         <h2 className={styles.sectionTitle}>指導老師</h2>
         <div className={styles.photoColumn}>
           {/* 老師 1 */}
@@ -140,7 +146,6 @@ export default function Gallery() {
                   className={styles.photo}
                   style={{ objectFit: 'cover' }}
                   unoptimized={hoveredIndex === 'teacher1'}
-                  onLoad={() => handleImageLoad('teacher1-static')}
                 />
                 <div className={styles.boxOverlay}>
                   <Image
@@ -172,7 +177,6 @@ export default function Gallery() {
                   className={styles.photo}
                   style={{ objectFit: 'cover' }}
                   unoptimized={hoveredIndex === 'teacher2'}
-                  onLoad={() => handleImageLoad('teacher2-static')}
                 />
                 <div className={styles.boxOverlay}>
                   <Image
@@ -190,8 +194,10 @@ export default function Gallery() {
         </div>
       </div>
 
+
       {/* 總召區塊 - 2 張照片 */}
       <div className={styles.sectionContainer}>
+        
         <h2 className={styles.sectionTitle}>總召 / 副總召</h2>
         <div className={styles.photoColumn}>
           {/* 總召 1 */}
@@ -210,7 +216,6 @@ export default function Gallery() {
                   className={styles.photo}
                   style={{ objectFit: 'cover' }}
                   unoptimized={hoveredIndex === 'coordinator1'}
-                  onLoad={() => handleImageLoad('coordinator1-static')}
                 />
                 <div className={styles.boxOverlay}>
                   <Image
@@ -242,7 +247,6 @@ export default function Gallery() {
                   className={styles.photo}
                   style={{ objectFit: 'cover' }}
                   unoptimized={hoveredIndex === 'coordinator2'}
-                  onLoad={() => handleImageLoad('coordinator2-static')}
                 />
                 <div className={styles.boxOverlay}>
                   <Image
@@ -280,7 +284,6 @@ export default function Gallery() {
                     className={styles.photo}
                     style={{ objectFit: 'cover' }}
                     unoptimized={hoveredIndex === index} // GIF 需要 unoptimized
-                    onLoad={() => handleImageLoad(`classmate-${index}-static`)}
                   />
                   {/* 覆蓋的 box.png 圖片 */}
                   <div className={styles.boxOverlay}>
