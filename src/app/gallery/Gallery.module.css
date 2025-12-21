@@ -1,0 +1,107 @@
+.pageWrapper {
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    padding: 80px 20px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.galleryContainer {
+    width: 70vw;
+    /* 容器寬度設定為 70vw */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.photoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 橫向 2 張，使用彈性寬度 */
+    grid-template-rows: repeat(20, auto);
+    /* 直向 20 張 */
+    gap: 20px;
+    /* 照片之間的間距 */
+    width: 100%;
+}
+
+.photoSlot {
+    width: 100%;
+    aspect-ratio: 533 / 800;
+    /* 保持 533:800 的比例 */
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photoSlot:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.photoWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.photo {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photoSlot:hover .photo {
+    transform: scale(1.05);
+}
+
+.photoPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+    border: 2px dashed #4a4a4a;
+}
+
+.photoNumber {
+    font-size: 48px;
+    font-weight: 700;
+    color: #666;
+    font-family: 'Inter', sans-serif;
+}
+
+/* 響應式設計 - 調整容器寬度和間距，但保持 2 列佈局 */
+@media (max-width: 1200px) {
+    .galleryContainer {
+        width: 85vw;
+        /* 在中等螢幕上稍微增加寬度 */
+    }
+
+    .photoGrid {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pageWrapper {
+        padding: 60px 10px 20px;
+    }
+
+    .galleryContainer {
+        width: 95vw;
+        /* 在小螢幕上使用更多空間 */
+    }
+
+    .photoGrid {
+        gap: 10px;
+    }
+
+    .photoNumber {
+        font-size: 32px;
+        /* 在小螢幕上縮小字體 */
+    }
+}

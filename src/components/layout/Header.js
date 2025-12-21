@@ -48,18 +48,17 @@ export default function Header() {
           <ul className={styles.menu}>
             <li><Link href="/">Home</Link></li>
             
-            {/* Mobile: Click to toggle sub-menu. Desktop: Hover */}
+            {/* Mobile: Always show. Desktop: Hover */}
             <li 
               className={styles.dropdown}
               onMouseEnter={() => !isMobileOpen && setIsAboutOpen(true)}
               onMouseLeave={() => !isMobileOpen && setIsAboutOpen(false)}
-              onClick={() => isMobileOpen && setIsAboutOpen(!isAboutOpen)}
             >
               <span className={styles.dropdownTrigger}>
-                About <span className={styles.arrow}>{isAboutOpen ? '▲' : '▼'}</span>
+                About {!isMobileOpen && <span className={styles.arrow}>{isAboutOpen ? '▲' : '▼'}</span>}
               </span>
               
-              <ul className={clsx(styles.dropdownMenu, isAboutOpen && styles.show)}>
+              <ul className={clsx(styles.dropdownMenu, (isAboutOpen || isMobileOpen) && styles.show)}>
                 <li><Link href="/about/spray">Spray</Link></li>
                 <li><Link href="/about/3d-printing">3D Printing</Link></li>
               </ul>

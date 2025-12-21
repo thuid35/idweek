@@ -362,9 +362,9 @@
   .menuContainer {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
-
+    right: 0;
+    width: 80vw;
+    /* 縮減寬度，為右側圖片留出空間 */
     height: 100vh;
     background: rgba(66, 66, 66, 0.8);
     /* Semi-transparent background */
@@ -373,10 +373,39 @@
     -webkit-backdrop-filter: blur(10px);
     /* Safari support */
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    /* 置頂對齊 */
+    padding: 8rem 3rem;
+    /* 上下和左右 padding */
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 100;
+  }
+
+  /* 右側垂直裝飾圖片 - 覆蓋在選單上並旋轉 90 度 */
+  .menuContainer::after {
+    content: '';
+    position: absolute;
+    right: -250px;
+    /* 覆蓋在選單右側 */
+    top: 60%;
+    transform: translateY(-50%) rotate(90deg);
+    /* 垂直居中並旋轉 90 度 */
+    width: 80vh;
+    /* 旋轉後，寬度變成原本的高度 */
+    height: 30vw;
+    /* 旋轉後，高度變成原本的寬度 */
+    background-image: url('/title/titleshape.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    /* 不影響點擊 */
+    z-index: 10;
+    /* 確保在選單內容之上 */
+    -webkit-filter: invert(1) contrast(500%);
+    filter: invert(1) contrast(500%);
+    opacity: 0.5;
   }
 
   .menuContainer.open {
@@ -386,21 +415,61 @@
   .menu {
     flex-direction: column;
     gap: 2rem;
-    text-align: center;
-    font-size: 1.5rem;
+    text-align: left;
+    /* 左對齊 */
+    align-items: flex-start;
+    /* 項目左對齊 */
+  }
+
+  .menu>li {
+    width: 100%;
+  }
+
+  .menu>li>a {
+    font-size: 2.5rem;
+    /* 大標題字體 */
+    font-weight: 700;
+    /* 粗體 */
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .dropdownTrigger {
+    font-size: 2.5rem;
+    /* 大標題字體 */
+    font-weight: 700;
+    /* 粗體 */
+    color: #fff;
+    letter-spacing: 0.05em;
   }
 
   .dropdownMenu {
     position: static;
     box-shadow: none;
-    background: #222;
-    margin-top: 1rem;
+    background: transparent;
+    /* 移除背景 */
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+    /* 縮排 */
     min-width: auto;
     width: 100%;
+    padding: 0;
   }
 
   .dropdownMenu a {
-    padding: 1rem;
-    font-size: 1.2rem;
+    padding: 0.6rem 0;
+    font-size: 1.3rem;
+    /* 小標題字體 */
+    font-weight: 400;
+    /* 正常字重 */
+    color: #ccc;
+    /* 較淡的顏色 */
+  }
+
+  .dropdownMenu a:hover {
+    background: transparent;
+    color: #fff;
+    padding-left: 0.5rem;
+    /* hover 時稍微縮排 */
   }
 }

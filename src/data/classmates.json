@@ -1,0 +1,189 @@
+{
+    "photos": [
+        {
+            "id": 1,
+            "src": "/images/classmate_p/classmate_01.jpg",
+            "alt": "同學照片 1"
+        },
+        {
+            "id": 2,
+            "src": "/images/classmate_p/classmate_02.jpg",
+            "alt": "同學照片 2"
+        },
+        {
+            "id": 3,
+            "src": "/images/classmate_p/classmate_03.jpg",
+            "alt": "同學照片 3"
+        },
+        {
+            "id": 4,
+            "src": "/images/classmate_p/classmate_04.jpg",
+            "alt": "同學照片 4"
+        },
+        {
+            "id": 5,
+            "src": "/images/classmate_p/classmate_05.jpg",
+            "alt": "同學照片 5"
+        },
+        {
+            "id": 6,
+            "src": "/images/classmate_p/classmate_06.jpg",
+            "alt": "同學照片 6"
+        },
+        {
+            "id": 7,
+            "src": "/images/classmate_p/classmate_07.jpg",
+            "alt": "同學照片 7"
+        },
+        {
+            "id": 8,
+            "src": "/images/classmate_p/classmate_08.jpg",
+            "alt": "同學照片 8"
+        },
+        {
+            "id": 9,
+            "src": "/images/classmate_p/classmate_09.jpg",
+            "alt": "同學照片 9"
+        },
+        {
+            "id": 10,
+            "src": "/images/classmate_p/classmate_10.jpg",
+            "alt": "同學照片 10"
+        },
+        {
+            "id": 11,
+            "src": "/images/classmate_p/classmate_11.jpg",
+            "alt": "同學照片 11"
+        },
+        {
+            "id": 12,
+            "src": "/images/classmate_p/classmate_12.jpg",
+            "alt": "同學照片 12"
+        },
+        {
+            "id": 13,
+            "src": "/images/classmate_p/classmate_13.jpg",
+            "alt": "同學照片 13"
+        },
+        {
+            "id": 14,
+            "src": "/images/classmate_p/classmate_14.jpg",
+            "alt": "同學照片 14"
+        },
+        {
+            "id": 15,
+            "src": "/images/classmate_p/classmate_15.jpg",
+            "alt": "同學照片 15"
+        },
+        {
+            "id": 16,
+            "src": "/images/classmate_p/classmate_16.jpg",
+            "alt": "同學照片 16"
+        },
+        {
+            "id": 17,
+            "src": "/images/classmate_p/classmate_17.jpg",
+            "alt": "同學照片 17"
+        },
+        {
+            "id": 18,
+            "src": "/images/classmate_p/classmate_18.jpg",
+            "alt": "同學照片 18"
+        },
+        {
+            "id": 19,
+            "src": "/images/classmate_p/classmate_19.jpg",
+            "alt": "同學照片 19"
+        },
+        {
+            "id": 20,
+            "src": "/images/classmate_p/classmate_20.jpg",
+            "alt": "同學照片 20"
+        },
+        {
+            "id": 21,
+            "src": "/images/classmate_p/classmate_21.jpg",
+            "alt": "同學照片 21"
+        },
+        {
+            "id": 22,
+            "src": "/images/classmate_p/classmate_22.jpg",
+            "alt": "同學照片 22"
+        },
+        {
+            "id": 23,
+            "src": "/images/classmate_p/classmate_23.jpg",
+            "alt": "同學照片 23"
+        },
+        {
+            "id": 24,
+            "src": "/images/classmate_p/classmate_24.jpg",
+            "alt": "同學照片 24"
+        },
+        {
+            "id": 25,
+            "src": "/images/classmate_p/classmate_25.jpg",
+            "alt": "同學照片 25"
+        },
+        {
+            "id": 26,
+            "src": "/images/classmate_p/classmate_26.jpg",
+            "alt": "同學照片 26"
+        },
+        {
+            "id": 27,
+            "src": "/images/classmate_p/classmate_27.jpg",
+            "alt": "同學照片 27"
+        },
+        {
+            "id": 28,
+            "src": "/images/classmate_p/classmate_28.jpg",
+            "alt": "同學照片 28"
+        },
+        {
+            "id": 29,
+            "src": "/images/classmate_p/classmate_29.jpg",
+            "alt": "同學照片 29"
+        },
+        {
+            "id": 30,
+            "src": "/images/classmate_p/classmate_30.jpg",
+            "alt": "同學照片 30"
+        },
+        {
+            "id": 31,
+            "src": "/images/classmate_p/classmate_31.jpg",
+            "alt": "同學照片 31"
+        },
+        {
+            "id": 32,
+            "src": "/images/classmate_p/classmate_32.jpg",
+            "alt": "同學照片 32"
+        },
+        {
+            "id": 33,
+            "src": "/images/classmate_p/classmate_33.jpg",
+            "alt": "同學照片 33"
+        },
+        {
+            "id": 34,
+            "src": "/images/classmate_p/classmate_34.jpg",
+            "alt": "同學照片 34"
+        },
+        {
+            "id": 35,
+            "src": "/images/classmate_p/classmate_35.jpg",
+            "alt": "同學照片 35"
+        },
+        {
+            "id": 36,
+            "src": "/images/classmate_p/classmate_36.jpg",
+            "alt": "同學照片 36"
+        },
+        {
+            "id": 37,
+            "src": "/images/classmate_p/classmate_37.jpg",
+            "alt": "同學照片 37"
+        }
+    ]
+}
