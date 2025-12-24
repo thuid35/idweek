@@ -4,7 +4,8 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import SmoothScrollProvider from '../components/providers/SmoothScrollProvider';
 import Loader from '../components/ui/Loader';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: '2025 東海工設週 | THU IDWEEK',
@@ -15,7 +16,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="zh-TW">
       <body>
-        <Analytics/>
         <SmoothScrollProvider>
           <Suspense fallback={null}>
             <Loader />
@@ -26,6 +26,8 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </SmoothScrollProvider>
+        <Analytics/>
+        <SpeedInsights/>
       </body>
     </html>
   );
