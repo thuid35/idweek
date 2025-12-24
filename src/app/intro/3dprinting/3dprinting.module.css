@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Chiron+GoRound+TC:wght@200..900&display=swap');
+/* Global Container */
+.container {
+    width: 100%;
+    background-color: #1a1a1a;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* COVER Container */
+.cover_container {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    margin-top: 200px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.cover_image_container {
+    position: absolute;
+    top: 60px;
+    left: -10px;
+    width: 300px;
+    height: 500px;
+}
+
+.cover_title_container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover_title {
+    border: #ffffff solid 1px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 14px;
+}
+
+.cover_title_text {
+    color: #ffffff;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cover_title_text_pressed {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: bold;
+    display: inline-block;
+    /* 必須，否則有些元素縮放怪怪的 */
+    transform: scaleX(3);
+    /* 1.3 = 橫向拉長 30% */
+    transform-origin: center;
+}
+
+.cover_subtitle {
+    height: 80px;
+    width: 180px;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: #ffffff solid 1px;
+}
+
+.cover_subtitle_text {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+}
+
+.cover__late_image_container {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    width: 160px;
+    height: 160px;
+    rotate: -15deg;
+}
+
+/* CONTENT Container */
+.content_intro_container {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    margin-top: 100px;
+}
+
+.content_intro_box1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 110px;
+    width: 100%;
+    /* borders are now handled by pseudo-elements for animation */
+}
+
+/* Horizontal borders sliding animation */
+.content_intro_box1::before,
+.content_intro_box1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #ffffff;
+    transition: width 1.5s ease;
+}
+
+.content_intro_box1::before {
+    top: 0;
+}
+
+.content_intro_box1::after {
+    bottom: 0;
+}
+
+/* Triggered by .visible parent */
+.visible .content_intro_box1::before,
+.visible .content_intro_box1::after {
+    width: 100%;
+}
+
+.content_intro_box1_box1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid transparent;
+    /* Start invisible */
+    transition: border-color 0.5s ease 0.8s;
+    /* Fade in after horizontal lines partially extend */
+}
+
+.visible .content_intro_box1_box1 {
+    border-right-color: #ffffff;
+}
+
+.content_intro_box1_box1_title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 1s;
+    /* Appear after borders */
+}
+
+.visible .content_intro_box1_box1_title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content_intro_box2 {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    height: 210px;
+    width: 100%;
+    /* borders are now handled by pseudo-elements for animation */
+}
+
+/* Horizontal borders sliding animation */
+.content_intro_box2::before,
+.content_intro_box2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 1px;
+}
+
+.content_intro_box2::before {
+    top: 0;
+}
+
+.content_intro_box2::after {
+    bottom: 0;
+}
+
+/* Triggered by .visible parent */
+.visible .content_intro_box2::before,
+.visible .content_intro_box2::after {
+    width: 100%;
+}
+
+.content_intro_box2_box1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    /* Start invisible */
+    transition: border-color 0.5s ease 0.8s;
+    /* Fade in after horizontal lines partially extend */
+    padding: 26px;
+}
+
+.content_intro_box2_box1_title {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 1s;
+    /* Appear after borders */
+}
+
+.visible .content_intro_box2_box1 {
+    border-left-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.visible .content_intro_box2_box1_title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@keyframes sway {
+    0% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+
+    100% {
+        transform: rotate(-2deg);
+    }
+}
+
+.sway_animation {
+    animation: sway 1.5s steps(1) infinite;
+    transform-origin: bottom center;
+    /* Pivot from bottom looks more natural for an object standing */
+}
+
+.content_one_container {
+    width: 100%;
+    height: 650px;
+    position: relative;
+    margin-top: 200px;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.content_one_box1_image_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+    border: #ffffff solid 1px;
+}
+
+.content_one_box1_title_container {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_one_box1_title_container_number {
+    color: #eb6100;
+    font-size: 80px;
+    transform: translateY(25px);
+    display: flex;
+    justify-content: right;
+    font-family: "BBH Hegarty", sans-serif;
+    font-style: normal;
+}
+
+.content_one_box1_title_container_box {
+    background: #eb6100;
+    padding: 20px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap: 15px;
+}
+
+.content_one_box1_title {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.content_one_box1_title_sub {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.hor_line {
+    border-bottom: 1px solid #ffffff;
+    position: absolute;
+}
+

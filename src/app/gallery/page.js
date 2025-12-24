@@ -87,109 +87,127 @@ export default function Gallery() {
 
   return (
     <div className={styles.pageWrapper}>
-      {/* 頁面角落裝飾照片 */}
-      <div className={styles.pageCornerPhoto} style={{ top: '300px', left: '-60px', rotate: '-5deg'}}>
-        <Image
-          src="/images/items/can1.png"
-          alt="角落裝飾"
-          width={150}
-          height={200}
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
-      <div className={styles.pageCornerPhoto} style={{ top: '210px', right: '-180px', rotate: '15deg' }}>
-        <Image
-          src="/images/items/can2.png"
-          alt="角落裝飾"
-          width={200}
-          height={250}
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
-      <div className={styles.pageCornerPhoto} style={{ top: '750px', left: '-20px', rotate: '-15deg' }}>
-        <Image
-          src="/images/items/tamiyacan.png"
-          alt="角落裝飾"
-          width={100}
-          height={200}
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
-      <div className={styles.pageCornerPhoto} style={{ top: '850px', right: '-220px' }}>
-        <Image
-          src="/images/items/can3.png"
-          alt="角落裝飾"
-          width={120}
-          height={250}
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
-
-      {/* 老師區塊 - 2 張照片 */}
-      <div className={styles.sectionContainer}>
-        
-        <h2 className={styles.sectionTitle}>指導老師</h2>
-        <div className={styles.photoColumn}>
-          {/* 老師 1 */}
-          <div className={styles.photoWithName}>
-            <div 
-              className={styles.specialPhotoSlot}
-              onMouseEnter={() => setHoveredIndex('teacher1')}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className={styles.photoWrapper}>
-                <Image
-                  src={hoveredIndex === 'teacher1' ? "/images/teachers_g/chang.gif" : "/images/teachers_p/chang.jpg"}
-                  alt="老師照片 1"
-                  fill
-                  sizes="(max-width: 600px) 140px, (max-width: 1200px) 350px, 400px"
-                  className={styles.photo}
-                  style={{ objectFit: 'cover' }}
-                  unoptimized={hoveredIndex === 'teacher1'}
-                />
-                <div className={styles.boxOverlay}>
-                  <Image
-                    src="/images/box2.png"
-                    alt="Box overlay"
-                    fill
-                    sizes="(max-width: 600px) 140px, (max-width: 1200px) 350px, 400px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-              </div>
-            </div>
-            <p className={styles.photoName}>張俊元</p>
+      <div className={styles.pageHeader}>
+        <div className={styles.titleWrapper}>
+          <h1 className={styles.mainTitle}>設計師照片</h1>
+          <div style={{ position: 'absolute', top: '-50px', right: '-170px', width: '180px', height: '180px' }}>
+            <Image
+              src="/images/items/camera.png"
+              alt="Camera"
+              fill
+              style={{ objectFit: 'contain' }}
+            />
           </div>
+        </div>
+        <p className={styles.guidanceText}>穿上實驗服，站在系館工廠的紅色大門前。背景中藏著製造的痕跡與空氣，象徵在創意與實作之間反覆試驗、逐步成形的我們。</p>
+        <p className={styles.guidanceSubText}>點擊拍立得讓同學動起來吧！</p>
+      </div>
 
-          {/* 老師 2 */}
-          <div className={styles.photoWithName}>
-            <div 
-              className={styles.specialPhotoSlot}
-              onMouseEnter={() => setHoveredIndex('teacher2')}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className={styles.photoWrapper}>
-                <Image
-                  src={hoveredIndex === 'teacher2' ? "/images/teachers_g/lin.gif" : "/images/teachers_p/lin.jpg"}
-                  alt="老師照片 2"
-                  fill
-                  sizes="(max-width: 600px) 140px, (max-width: 1200px) 350px, 400px"
-                  className={styles.photo}
-                  style={{ objectFit: 'cover' }}
-                  unoptimized={hoveredIndex === 'teacher2'}
-                />
-                <div className={styles.boxOverlay}>
+      <div className={styles.teacherGroupWrapper}>
+        {/* 頁面角落裝飾照片 - 相對於 teacherGroupWrapper */}
+        <div className={styles.pageCornerPhoto} style={{ top: '-160px', left: '-100px', rotate: '-15deg'}}>
+          <Image
+            src="/images/items/can1.png"
+            alt="角落裝飾"
+            width={250}
+            height={400}
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+        <div className={styles.pageCornerPhoto} style={{ top: '110px', right: '-400px', rotate: '15deg' }}>
+          <Image
+            src="/images/items/can2.png"
+            alt="角落裝飾"
+            width={300}
+            height={350}
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+        <div className={styles.pageCornerPhoto} style={{ top: '650px', left: '-20px', rotate: '-15deg' }}>
+          <Image
+            src="/images/items/tamiyacan.png"
+            alt="角落裝飾"
+            width={140}
+            height={300}
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+        <div className={styles.pageCornerPhoto} style={{ top: '750px', right: '-460px', rotate: '15deg' }}>
+          <Image
+            src="/images/items/can3.png"
+            alt="角落裝飾"
+            width={160}
+            height={300}
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+
+        {/* 老師區塊 - 2 張照片 */}
+        <div className={styles.sectionContainer}>
+          
+          <h2 className={styles.sectionTitle}>指導老師</h2>
+          <div className={styles.photoColumn}>
+            {/* 老師 1 */}
+            <div className={styles.photoWithName}>
+              <div 
+                className={styles.specialPhotoSlot}
+                onMouseEnter={() => setHoveredIndex('teacher1')}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className={styles.photoWrapper}>
                   <Image
-                    src="/images/box2.png"
-                    alt="Box overlay"
+                    src={hoveredIndex === 'teacher1' ? "/images/teachers_g/chang.gif" : "/images/teachers_p/chang.jpg"}
+                    alt="老師照片 1"
                     fill
                     sizes="(max-width: 600px) 140px, (max-width: 1200px) 350px, 400px"
+                    className={styles.photo}
                     style={{ objectFit: 'cover' }}
+                    unoptimized={hoveredIndex === 'teacher1'}
                   />
+                  <div className={styles.boxOverlay}>
+                    <Image
+                      src="/images/box2.png"
+                      alt="Box overlay"
+                      fill
+                      sizes="(max-width: 600px) 140px, (max-width: 1200px) 350px, 400px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
                 </div>
               </div>
+              <p className={styles.photoName}>張俊元</p>
             </div>
-            <p className={styles.photoName}>林淨暘</p>
+
+            {/* 老師 2 */}
+            <div className={styles.photoWithName}>
+              <div 
+                className={styles.specialPhotoSlot}
+                onMouseEnter={() => setHoveredIndex('teacher2')}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className={styles.photoWrapper}>
+                  <Image
+                    src={hoveredIndex === 'teacher2' ? "/images/teachers_g/lin.gif" : "/images/teachers_p/lin.jpg"}
+                    alt="老師照片 2"
+                    fill
+                    sizes="(max-width: 600px) 140px, (max-width: 1200px) 350px, 400px"
+                    className={styles.photo}
+                    style={{ objectFit: 'cover' }}
+                    unoptimized={hoveredIndex === 'teacher2'}
+                  />
+                  <div className={styles.boxOverlay}>
+                    <Image
+                      src="/images/box2.png"
+                      alt="Box overlay"
+                      fill
+                      sizes="(max-width: 600px) 140px, (max-width: 1200px) 350px, 400px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <p className={styles.photoName}>林淨暘</p>
+            </div>
           </div>
         </div>
       </div>
@@ -198,7 +216,7 @@ export default function Gallery() {
       {/* 總召區塊 - 2 張照片 */}
       <div className={styles.sectionContainer}>
         
-        <h2 className={styles.sectionTitle}>總召 / 副總召</h2>
+        <h2 className={styles.sectionTitle}>總召 & 副總召</h2>
         <div className={styles.photoColumn}>
           {/* 總召 1 */}
           <div className={styles.photoWithName}>

@@ -32,8 +32,8 @@
 /* 頁面角落裝飾照片 - 固定在頁面四個角落 */
 .pageCornerPhoto {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 600px;
+    height: 600px;
     border-radius: 8px;
     overflow: hidden;
     z-index: 0;
@@ -264,5 +264,70 @@
     .photoNumber {
         font-size: 24px;
         /* 在小螢幕上縮小字體 */
+    }
+}
+
+.pageHeader {
+    margin-bottom: 160px;
+    z-index: 1;
+    height: 400px;
+}
+
+.titleWrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: 100px;
+}
+
+.mainTitle {
+    font-size: 64px;
+    font-weight: 800;
+    color: #ffffff;
+    /* margin-top: 100px; Removed and moved to wrapper */
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.guidanceText {
+    text-align: center;
+    font-size: 18px;
+    color: #aaaaaa;
+    margin-top: 85px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    width: 300px;
+}
+
+.guidanceSubText {
+    text-align: center;
+    font-size: 16px;
+    color: #888888;
+    margin-top: 24px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+}
+
+.teacherGroupWrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .mainTitle {
+        font-size: 42px;
+    }
+
+    .guidanceText {
+        font-size: 14px;
+    }
+
+    .pageHeader {
+        margin-bottom: 40px;
     }
 }
