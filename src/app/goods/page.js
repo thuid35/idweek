@@ -1,28 +1,25 @@
 'use client';
 
 import styles from '../../styles/Goods.module.css';
-import { Reveal } from '../../components/animation/gsap';
 
 export default function Goods() {
   return (
-    <div className={styles.container}>
-      <Reveal>
-        <div className={styles.hero}>
-          <h1 className={styles.title}>Goods</h1>
-          <p>Curated products for design enthusiasts.</p>
-        </div>
-      </Reveal>
-
-      <div className={styles.grid}>
-        {[1, 2, 3, 4].map((item) => (
-          <Reveal key={item} delay={item * 0.1}>
-            <div className={styles.card}>
-              <h2 className={styles.cardTitle}>Product {item}</h2>
-              <p>Description for product {item}. High quality and well designed.</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+    <div className={styles.container} style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '60vh',
+      flexDirection: 'column'
+    }}>
+      <h1 style={{ 
+        fontSize: '1.5rem', 
+        opacity: 0.8,
+        color: '#fff',
+        fontWeight: 'normal',
+        letterSpacing: '2px'
+      }}>
+        抱歉...本頁正在維修中
+      </h1>
     </div>
   );
 }
