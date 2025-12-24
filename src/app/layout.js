@@ -1,4 +1,5 @@
 import './globals.css';
+import { Suspense } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import SmoothScrollProvider from '../components/providers/SmoothScrollProvider';
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <SmoothScrollProvider>
-          <Loader />
+          <Suspense fallback={null}>
+            <Loader />
+          </Suspense>
           <Header />
           <main style={{ minHeight: '100vh' }}>
             {children}
