@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Chiron+GoRound+TC:wght@200..900&display=swap');
 /* Global Container */
+::selection {
+    background: #eb6100;
+    color: black;
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: #eb6100;
+    color: #EEE;
+    text-shadow: none;
+}
+
 .container {
     width: 100%;
     background-color: #1a1a1a;
@@ -267,7 +279,7 @@
 
 .content_one_container {
     width: 100%;
-    height: 650px;
+    height: 1000px;
     position: relative;
     margin-top: 200px;
     border-top: 1px solid #ffffff;
@@ -283,15 +295,13 @@
     border: #ffffff solid 1px;
 }
 
-.content_one_box1_title_container {
+.content_title_container {
     position: absolute;
-    top: 40px;
-    right: 50px;
     display: flex;
     flex-direction: column;
 }
 
-.content_one_box1_title_container_number {
+.content_title_container_number {
     color: #eb6100;
     font-size: 80px;
     transform: translateY(25px);
@@ -301,7 +311,7 @@
     font-style: normal;
 }
 
-.content_one_box1_title_container_box {
+.content_title_container_box {
     background: #eb6100;
     padding: 20px;
     width: 180px;
@@ -313,13 +323,13 @@
     gap: 15px;
 }
 
-.content_one_box1_title {
+.content_title {
     color: #ffffff;
     font-size: 22px;
     font-weight: 500;
 }
 
-.content_one_box1_title_sub {
+.content_title_sub {
     color: #ffffff;
     font-size: 14px;
     font-weight: 300;
@@ -329,4 +339,83 @@
     border-bottom: 1px solid #ffffff;
     position: absolute;
 }
+.ver_line {
+    border-right: 1px solid #ffffff;
+    position: absolute;
+}
 
+.paper_container {
+    position: absolute;
+    height: 320px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.paper_container_text {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #303030;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    z-index: 10;
+}
+
+.content_one_box2_image_container {
+    position: absolute;
+    top: 480px;
+    right: -30px;
+    height: 300px;
+    width: 220px;
+}
+
+.content_two_container {
+    width: 100%;
+    height: 1000px;
+    margin-top: -100px;
+    position: relative;
+    border-top: 1px solid #ffffff;
+}
+
+.content_two_box1_image_container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 200px;
+    width: 200px;
+    border: #ffffff solid 1px;
+}
+
+.content_three_container {
+    width: 100%;
+    height: 1100px;
+    margin-top: -180px;
+    position: relative;
+    border-top: 1px solid #ffffff;
+}
+
+.content_three_box1_image_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+    border: #ffffff solid 1px;
+}
+
+.content_three_txt {
+    position: absolute;
+    top: 230px;
+    left: 20px;
+    width: 120px;
+    height: 100px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+}
