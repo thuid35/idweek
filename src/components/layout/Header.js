@@ -46,7 +46,7 @@ export default function Header() {
         {/* Desktop & Mobile Menu */}
         <div className={clsx(styles.menuContainer, isMobileOpen && styles.open)}>
           <ul className={styles.menu}>
-            <li><Link href="/">Home</Link></li>
+            <li><Link href="/">首頁</Link></li>
             
             {/* Mobile: Always show. Desktop: Hover */}
             <li 
@@ -55,17 +55,17 @@ export default function Header() {
               onMouseLeave={() => !isMobileOpen && setIsAboutOpen(false)}
             >
               <span className={styles.dropdownTrigger}>
-                About {!isMobileOpen && <span className={styles.arrow}>{isAboutOpen ? '▲' : '▼'}</span>}
+                關於展覽 {!isMobileOpen && <span className={styles.arrow}>{isAboutOpen ? '▲' : '▼'}</span>}
               </span>
               
               <ul className={clsx(styles.dropdownMenu, (isAboutOpen || isMobileOpen) && styles.show)}>
-                <li><Link href="/about/spray">Spray</Link></li>
-                <li><Link href="/about/3d-printing">3D Printing</Link></li>
+                <li><Link href="/intro/spray">噴漆</Link></li>
+                <li><Link href="/intro/3dprinting">3D列印</Link></li>
               </ul>
             </li>
             
-            <li><Link href="/goods">Goods</Link></li>
-            <li><Link href="/info">Info</Link></li>
+            <li><Link href="/goods">周邊商品</Link></li>
+            <li><Link href="/gallery">設計師</Link></li>
           </ul>
         </div>
       </nav>

@@ -28,50 +28,90 @@ export default function Gallery() {
       }
     };
 
-    // 初始進度
-    updateProgress(0);
-    console.log('[Gallery] 開始載入頁面');
+    // 收集所有需要預載入的圖片
+    const getAllImages = () => {
+      const staticImages = [
+        '/images/items/camera.png',
+        '/images/items/can1.png',
+        '/images/items/can2.png',
+        '/images/items/tamiyacan.png',
+        '/images/items/can3.png',
+        '/images/box.png',
+        '/images/box2.png',
+        // 老師照片
+        '/images/teachers_p/chang.jpg',
+        '/images/teachers_g/chang.gif',
+        '/images/teachers_p/lin.jpg',
+        '/images/teachers_g/lin.gif',
+        // 總召照片
+        '/images/manager_p/wu.jpg',
+        '/images/manager_g/wu.gif',
+        '/images/manager_p/lee.jpg',
+        '/images/manager_g/lee.gif',
+      ];
 
-    // DOM 載入完成
-    if (document.readyState === 'loading') {
-      const handleDOMContentLoaded = () => {
-        console.log('[Gallery] DOM 載入完成');
-        updateProgress(30);
-      };
-      document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
-    } else {
-      updateProgress(30);
-    }
+      const classmateImages = photos.flatMap(photo => [photo.src, photo.gifSrc]);
+      return [...staticImages, ...classmateImages];
+    };
 
-    // 監聽所有資源載入完成
-    const handleLoad = () => {
-      console.log('[Gallery] 所有資源載入完成');
-      updateProgress(70);
+    const preloadImage = (src) => {
+      return new Promise((resolve, reject) => {
+        const img = new window.Image();
+        img.src = src;
+        img.onload = () => resolve(src);
+        img.onerror = () => resolve(src); // 即使失敗也視為完成，避免卡住
+      });
+    };
+
+    const loadAllImages = async () => {
+      console.log('[Gallery] 開始預載入圖片');
+      updateProgress(10);
       
-      // 等待一小段時間確保渲染完成
+      const allImages = getAllImages();
+      const totalImages = allImages.length;
+      let loadedCount = 0;
+
+      // 分批載入以避免過多並發請求（可選，這裡簡單起見直接全部並發，瀏覽器有上限）
+      const loadPromises = allImages.map(src => {
+        return preloadImage(src).then(() => {
+          loadedCount++;
+          // 計算進度：10% ~ 90%
+          const currentProgress = 10 + Math.floor((loadedCount / totalImages) * 80);
+          updateProgress(currentProgress);
+        });
+      });
+
+      try {
+        await Promise.all(loadPromises);
+        console.log('[Gallery] 所有圖片載入完成');
+      } catch (error) {
+        console.error('[Gallery] 圖片載入發生錯誤', error);
+      }
+
+      // 完成
+      updateProgress(100);
+      // 稍微延遲一點點讓使用者看到 100%
       setTimeout(() => {
-        console.log('[Gallery] 頁面渲染完成');
-        updateProgress(100);
         setIsPageReady(true);
       }, 500);
     };
 
-    if (document.readyState === 'complete') {
-      handleLoad();
+    // 開始載入流程
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadAllImages);
     } else {
-      window.addEventListener('load', handleLoad);
+      loadAllImages();
     }
 
-    // 設定最大等待時間（10 秒）
+    // 設定最大等待時間（20 秒，因為圖片較多）
     const maxTimeout = setTimeout(() => {
       console.log('[Gallery] 達到最大等待時間，強制完成');
       updateProgress(100);
       setIsPageReady(true);
-    }, 10000);
+    }, 20000);
 
     return () => {
-      document.removeEventListener('DOMContentLoaded', () => {});
-      window.removeEventListener('load', handleLoad);
+      document.removeEventListener('DOMContentLoaded', loadAllImages);
       clearTimeout(maxTimeout);
     };
   }, []);
@@ -95,12 +135,13 @@ export default function Gallery() {
               src="/images/items/camera.png"
               alt="Camera"
               fill
+              sizes="180px"
               style={{ objectFit: 'contain' }}
             />
           </div>
         </div>
         <p className={styles.guidanceText}>穿上實驗服，站在系館工廠的紅色大門前。背景中藏著製造的痕跡與空氣，象徵在創意與實作之間反覆試驗、逐步成形的我們。</p>
-        <p className={styles.guidanceSubText}>點擊拍立得讓同學動起來吧！</p>
+        <p className={styles.guidanceSubText}>點擊拍立得，讓大家動起來吧！</p>
       </div>
 
       <div className={styles.teacherGroupWrapper}>

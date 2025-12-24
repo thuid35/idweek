@@ -278,7 +278,7 @@
 /* Menu Container */
 .menuContainer {
   display: flex;
-  align-items: center;
+  align-items: left;
 }
 
 .menu {
@@ -375,7 +375,7 @@
     flex-direction: column;
     justify-content: flex-start;
     /* 置頂對齊 */
-    padding: 8rem 3rem;
+    padding: 8rem 2rem;
     /* 上下和左右 padding */
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
