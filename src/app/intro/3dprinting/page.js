@@ -69,9 +69,6 @@ export default function ThreeDPrintingPage() {
         <div className={ddd.cover__late_image_container}>
           <Image src="/images/intro_3d/cover/3dline.png" alt="3D Printing Cover" fill style={{ objectFit: 'cover' }}/>
         </div>
-        <div className={ddd.cover__late_image_container}>
-          <Image src="/images/intro_3d/cover/3dline.png" alt="3D Printing Cover" fill style={{ objectFit: 'cover' }}/>
-        </div>
       </div>
       {/* COVER Space End*/}
       {/* CONTENT Intro Space */}
@@ -85,6 +82,12 @@ export default function ThreeDPrintingPage() {
           <div className={ddd.content_intro_box2_box1}>
             <p className={ddd.content_intro_box2_box1_title}>在模型真正被觸摸之前，它先存在於螢幕裡。從建模、切片到列印，3D 列印的三個步驟，讓想像逐層成形。<br/><br/>這是一段把數位轉化為實體的過程，也為後續的表面處理與噴漆奠定基礎。</p>
           </div>
+        </div>
+        <div className={ddd.cover__late_image_container} style={{ top: '-60px', right: '90px', width: '100px', height: '100px' }}>
+          <Image src="/images/intro_3d/cover/item1.png" alt="3D Printing Cover" fill style={{ objectFit: 'cover' }}/>
+        </div>
+        <div className={ddd.cover__late_image_container} style={{ top: '280px', left: '-50px', width: '200px', height: '200px' }}>
+          <Image src="/images/intro_3d/cover/line2.png" alt="3D Printing Cover" fill style={{ objectFit: 'cover' }}/>
         </div>
       </div>
       {/* CONTENT Intro Space End*/}
