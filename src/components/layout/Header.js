@@ -22,7 +22,9 @@ export default function Header() {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <div className={styles.logo}>
-          <Link href="/">IDWeek</Link>
+          <Link href="/">
+            <img src="/weblogo.png" alt="IDWeek" className={styles.logoImage} />
+          </Link>
         </div>
 
         {/* Hamburger Button */}

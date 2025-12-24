@@ -24,6 +24,21 @@
   position: relative;
   z-index: 102;
   /* Above mobile menu */
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 2.5rem;
+  width: auto;
+  filter: invert(1);
+  display: block;
+
 }
 
 /* Hamburger */
