@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = 'https://idweek.thuid.net'; // 請將此處替換為您的實際網域名稱
+  const baseUrl = 'https://idweek.thuid.net';
 
   return {
     rules: {
@@ -8,4 +8,5 @@ export default function robots() {
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };
+  
 };

@@ -1,25 +1,10 @@
-'use client';
+import GoodsClient from './GoodsClient';
 
-import styles from '../../styles/Goods.module.css';
+export const metadata = {
+  title: '周邊商品 | 2025 東海工設週',
+  description: '2025 東海工設週限量周邊商品。',
+};
 
-export default function Goods() {
-  return (
-    <div className={styles.container} style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      height: '60vh',
-      flexDirection: 'column'
-    }}>
-      <h1 style={{ 
-        fontSize: '1.5rem', 
-        opacity: 0.8,
-        color: '#fff',
-        fontWeight: 'normal',
-        letterSpacing: '2px'
-      }}>
-        抱歉...本頁正在維修中
-      </h1>
-    </div>
-  );
+export default function Page() {
+  return <GoodsClient />;
 }
