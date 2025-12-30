@@ -216,7 +216,7 @@ export default function Gallery() {
                   </div>
                 </div>
               </div>
-              <p className={styles.photoName}>張俊元</p>
+              <p className={styles.photoName}>張俊元 屌nm殺逼一個</p>
             </div>
 
             {/* 老師 2 */}
