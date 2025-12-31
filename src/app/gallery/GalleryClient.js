@@ -216,7 +216,7 @@ export default function Gallery() {
                   </div>
                 </div>
               </div>
-              <p className={styles.photoName}>張俊元[sb]</p>
+              <p className={styles.photoName}>張俊元 老師</p>
             </div>
 
             {/* 老師 2 */}
@@ -247,7 +247,7 @@ export default function Gallery() {
                   </div>
                 </div>
               </div>
-              <p className={styles.photoName}>林淨暘</p>
+              <p className={styles.photoName}>林淨暘 老師</p>
             </div>
           </div>
         </div>
